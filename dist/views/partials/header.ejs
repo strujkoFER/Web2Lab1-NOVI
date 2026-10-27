@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= typeof title !== 'undefined' ? title : 'Propusnice' %></title>
+</head>
+<body>
+<nav>
+  <a href="/">Početna</a>
+  <% if (typeof username !== 'undefined' && username) { %>
+    <span>Prijavljen: <%= username %>
+      <form method="post" action="/logout"><button type="submit">Odjava</button></form>
+    </span>
+  <% } else { %>
+    <a href="/login">Prijava</a>
+  <% } %>
+</nav>

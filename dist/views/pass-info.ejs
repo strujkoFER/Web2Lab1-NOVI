@@ -1,0 +1,15 @@
+<%- include('partials/header', { title: 'Propusnica ' + pass.id, username }) %>
+<h1>Propusnica <%= pass.id %></h1>
+<ul>
+  <li>Ime: <%= pass.name %></li>
+  <li>Dokument: <%= pass.document %></li>
+  <li>Izdana: <%= new Date(pass.issuedAt).toLocaleString('hr-HR') %></li>
+  <li>Status: <%= pass.status === 'ACTIVE' ? 'Aktivna' : 'Poništena' %></li>
+</ul>
+<% if (username) { %>
+  <% if (pass.status === 'ACTIVE') { %>
+    <form method="post" action="/pass-info/<%= pass.id %>/cancel"><button type="submit">Poništi</button></form>
+  <% } %>
+  <form method="post" action="/pass-info/<%= pass.id %>/delete"><button type="submit">Obriši</button></form>
+<% } %>
+<p><a href="/">Natrag</a></p>

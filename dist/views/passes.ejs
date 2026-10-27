@@ -1,0 +1,15 @@
+<%- include('partials/header', { title: 'Propusnice', username }) %>
+<h1>Propusnice</h1>
+<p>Ukupan broj propusnica: <strong><%= total %></strong></p>
+<p>Broj aktivnih propusnica: <strong><%= active %></strong></p>
+
+<% if (username) { %>
+  <h2>Pregled propusnica</h2>
+  <ul>
+    <% passes.forEach(p => { %>
+      <li><a href="/pass-info/<%= p.id %>"><%= p.name %> (<%= p.document %>)</a></li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p><a href="/login">Prijavite se</a> za pregled propusnica.</p>
+<% } %>
